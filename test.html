@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hackers Page</title>
+    <link rel="stylesheet" href="index.css" />
+</head>
+
+<body>
+    <img src="glitch-Photoroom.png" alt="Overlay" class="foreground-image" id="glitch" />
+    <div class="container" style="z-index: 1;" id="container">
+        <div class="left">
+            <h1>Hackscript</h1>
+            <p>Hackscript is a platform for suggesting and discovering hacks.</p>
+            <div class="note">Note: Mainly for school apps.</div>
+        </div>
+        <div class="right"></div>
+    </div>
+    <script defer>
+
+        const glitch = document.getElementById('glitch');
+        const container = document.getElementById('container');
+        showGlitch();
+        function showGlitch() {
+            glitch.classList.remove('hide');
+            container.classList.add('hide')
+            setTimeout(() => {
+                glitch.classList.add('hide');
+            }, 500); // Hide after 0.5 seconds
+            setTimeout(showGlitch, Math.random() * (10000 - 1000) + 1000); // Re-glitch after random time
+        }
+    </script>
+</body>
+
+</html>
