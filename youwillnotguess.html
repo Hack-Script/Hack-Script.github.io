@@ -10,7 +10,14 @@
 
 <body>
     <img src="glitch-Photoroom.png" alt="Overlay" class="foreground-image" id="glitch" />
+    <nav>
+        <ul class="nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="hacks.html">Hacks</a></li>
+        </ul>
+    </nav>
     <div class="container" style="z-index: 1;" id="container">
+
         <div class="left">
             <h1>Hackscript</h1>
             <p>Hackscript is a platform for suggesting and discovering hacks.</p>
@@ -24,12 +31,25 @@
         const container = document.getElementById('container');
         showGlitch();
         function showGlitch() {
+            switch (Math.round(Math.random())) {
+                case 0:
+                    im = 'glitch-Photoroom.png'; // "Im watching you" image
+                    break;
+
+                default:
+                    im = 'iffy.svg'; // Hacker image
+                    break;
+            }
+            glitchf(220, im);
+            setTimeout(glitchf, 350, 100, im); // Cool glitch effect
+            setTimeout(showGlitch, Math.random() * (10000 - 1000) + 1000); // Re-glitch after random time
+        }
+        function glitchf(time, im) {
+            glitch.src = im || 'glitch-Photoroom.png'; // Default image
             glitch.classList.remove('hide');
-            container.classList.add('hide')
             setTimeout(() => {
                 glitch.classList.add('hide');
-            }, 500); // Hide after 0.5 seconds
-            setTimeout(showGlitch, Math.random() * (10000 - 1000) + 1000); // Re-glitch after random time
+            }, time); // Hide after `time` seconds
         }
     </script>
 </body>
